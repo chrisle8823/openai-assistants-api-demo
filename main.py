@@ -1,5 +1,6 @@
 from openai import OpenAI
 import streamlit as st
+import time
 
 # Set page configuration
 st.set_page_config(
@@ -68,7 +69,7 @@ if prompt := st.chat_input("What's on your mind?"):
         run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id="asst_CtJTbk0SOObS3RR5spbRR8Mv")
         
         # Wait for run to complete
-        while run.status != "completed":
+        while run.status not in ["completed", "failed"]:
             run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
             time.sleep(1)
         
