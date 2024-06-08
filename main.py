@@ -79,8 +79,8 @@ if prompt := st.chat_input("What's on your mind?"):
         
         # Display the assistant's response
         if messages:
-            latest_message = messages[0]
-            response_content = latest_message["content"]
+            latest_message = messages[-1]
+            response_content = latest_message["content"][0]["text"]["value"]
             st.markdown(response_content)
             st.session_state.messages.append({"role": "assistant", "content": response_content})
         else:
