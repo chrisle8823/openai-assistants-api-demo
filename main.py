@@ -2,10 +2,10 @@ import time
 from openai import OpenAI
 
 # Enter your Assistant ID here.
-ASSISTANT_ID = "asst_xxx"
+ASSISTANT_ID = "asst_CtJTbk0SOObS3RR5spbRR8Mv"
 
 # Make sure your API key is set as an environment variable.
-client = OpenAI()
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Create a thread with a message.
 thread = client.beta.threads.create(
