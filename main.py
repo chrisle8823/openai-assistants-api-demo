@@ -77,9 +77,6 @@ if prompt := st.chat_input("What's on your mind?"):
         message_response = client.beta.threads.messages.list(thread_id=thread.id)
         messages = message_response.data
         
-        # Print the entire response to debug
-        st.write("Full response:", [str(msg) for msg in messages])
-
         # Display the assistant's response
         if messages and messages[-1].content and len(messages[-1].content) > 0:
             latest_message = messages[-1]
