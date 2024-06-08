@@ -78,10 +78,10 @@ if prompt := st.chat_input("What's on your mind?"):
         messages = message_response.data
         
         # Display the assistant's response
-        if messages:
+        if messages and "content" in messages[-1] and messages[-1]["content"]:
             latest_message = messages[-1]
             response_content = latest_message["content"][0]["text"]["value"]
             st.markdown(response_content)
             st.session_state.messages.append({"role": "assistant", "content": response_content})
         else:
-            st.error("No messages found.")
+            st.error("No messages found or message content is missing.")
